@@ -1,22 +1,6 @@
 # Introduction
 
-A Simple ToDo App is built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app 
-
----
-
-> Be sure to add that lovely star 😀 and fork it for your own copy
-
----
-
-# Objectives
-
-- It's a beginner level app created to understand how MVC concept and logins are added
-
----
-
-# Who is this for? 
-
-- It's for beginners & intermediates with little more experience, to help understand the various aspects of building a node app with some complex features
+A Wedding planning App using the MVC Architecture. We have also implemented "authorization" so folx can sign up, customize & personalize the app 
 
 ---
 
@@ -39,6 +23,34 @@ bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mon
   - DB_STRING: `your database URI` 
  ---
  
- Have fun testing and improving it! 😎
+ # Team Members
+-ForDB#2273 - Nicole
+-Hanzla_Saadi#4292 - Hanzla
+-mdcv#5531 - Monica
+-nshoemake#5032 - Nick
+-SeismicPumpkin#8057 - Whit
+-Sunny#5314 - Robert
 
+# Due Dates
+Important Dates: 
+MVP completed: 9/2/22 (team meeting to deploy)
+Enhancements due: 9/5/22
+
+-Goal: have all features ready to combine by Monday 
+  - (3:30-6:30PM PST on Monday) 
+
+# Availability
+-Nicole, Monica, Robert - PST
+-Hanzla GMT + 5 (12 hours from PST; available 12-6AM his time)
+-Nick - GMT + 10 (17 hours ahead of PST)
+
+# Added Features & Responsibilities
+1. Front-end: Robert & Hanzla
+2. Priority/Category feature: Monica
+3. Due date feature: Nicole
+4. Sharing feature: Nick
+5. Reminder feature: Monica & Nicole (time permitting)
+
+# Optimizations
+Friend system to allow for users to assign tasks to one another while planning a big event (like a wedding).
 
