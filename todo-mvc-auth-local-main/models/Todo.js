@@ -20,7 +20,12 @@ const TodoSchema = new mongoose.Schema({
   dateDue: {
     type: String,
     required: false,
-  }
+  },
+  //mdcv: Added priority field in the database to store the priority string from the dropdown menu
+  category: {
+    type: String,
+    required: false,
+  },
 })
 
 module.exports = mongoose.model('Todo', TodoSchema)
