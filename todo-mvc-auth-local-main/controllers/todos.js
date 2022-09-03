@@ -13,7 +13,7 @@ module.exports = {
     },
     createTodo: async (req, res)=>{
             try{
-                await Todo.create({todo: req.body.todoItem, completed: false, userId: req.user.id, dateDue: req.body.dateDue})
+                await Todo.create({todo: req.body.todoItem, completed: false, userId: req.user.id, dateDue: req.body.dateDue, category: req.body.category})
                 console.log('Todo has been added!')
                 res.redirect('/todos')
             }catch(err){
@@ -42,24 +42,24 @@ module.exports = {
             console.log(err)
         }
     },
-    highPriority: async (req, res)=>{
+    markComplete: async (req, res)=>{
         try{
             await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                priority: 'high',
+                completed: true
             })
-            console.log('Marked High Priority')
-            res.json('Marked High Priority')
+            console.log('Marked Complete')
+            res.json('Marked Complete')
         }catch(err){
             console.log(err)
         }
     },
-    lowPriority: async (req, res)=>{
+    markIncomplete: async (req, res)=>{
         try{
             await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                priority: 'low',
+                completed: false
             })
-            console.log('Marked Low Priority')
-            res.json('Marked Low Priority')
+            console.log('Marked Incomplete')
+            res.json('Marked Incomplete')
         }catch(err){
             console.log(err)
         }

@@ -14,10 +14,54 @@
             <li class='todoItem' data-id='<%=el._id%>'>
                 <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
                 <span> Due: <%= el.dateDue %></span>
-                <span> Days remaining: <%= Math.ceil((new Date(Date.parse(el.dateDue)).getTime() - new Date().getTime() )/ (1000 * 3600 *24))%>
+                <span> Days remaining: <%= Math.ceil((new Date(Date.parse(el.dateDue)).getTime() - new Date().getTime() )/ (1000 * 3600 *24))%></span>
                 <span class='del'> Delete </span>
             </li>
     <% }) %>    
+    </ul>
+
+    <!--
+        mdcv: the following lists separate all of the User's tasks according to what category it's related to. Marking a task off in the category will also
+        mark it off in the Master list. Delete works in this manner as well.
+
+        To implement: I just added a nested if statement inside of the forEach to filter out the tasks based on the category property
+    
+    -->
+    <h2>Category: Food</h2>
+    <ul>
+        <% todos.forEach( el => { %>
+            <% if(el.category === 'food'){ %>
+                <li class='todoItem' data-id='<%=el._id%>'>
+                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                    
+                    <span class='del'>&nbsp;Delete </span>
+                </li>
+            <% } %>
+        <% }) %>    
+    </ul>
+    <h2>Category: Vendors</h2>
+    <ul>
+        <% todos.forEach( el => { %>
+            <% if(el.category === 'vendors'){ %>
+                <li class='todoItem' data-id='<%=el._id%>'>
+                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                    
+                    <span class='del'>&nbsp;Delete </span>
+                </li>
+            <% } %>
+        <% }) %>    
+    </ul>
+    <h2>Category: Clothing</h2>
+    <ul>
+        <% todos.forEach( el => { %>
+            <% if(el.category === 'clothing'){ %>
+                <li class='todoItem' data-id='<%=el._id%>'>
+                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                    
+                    <span class='del'>&nbsp;Delete </span>
+                </li>
+            <% } %>
+        <% }) %>    
     </ul>
 
     <h2><%= user.userName %> has <%= left %> things left to do.</h2>
@@ -26,6 +70,14 @@
         <input type="text" placeholder="Enter Todo Item" name='todoItem'>
         <input type="date" id="dateDue" name="dateDue"
        min="2022-01-01" max="2024-12-31">
+
+       <!-- mdcv: Added dropdown menu to select priority level -->
+        <select id="category" name="category">
+            <option value="" selected="true" disabled="disabled">Select Category</option>
+            <option name="category" value="food">Food</option>
+            <option name="category" value="vendors">Vendors</option>
+            <option name="category" value="clothing">Clothing</option>
+        </select>
         <input type="submit">
     </form>
 
