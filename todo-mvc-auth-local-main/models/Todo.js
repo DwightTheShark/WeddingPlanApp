@@ -9,8 +9,10 @@ const TodoSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  // * nshoemake
+  // ! Changed userId to be an array. This will allow multiple users to access the specific todo.
   userId: {
-    type: String,
+    type: Array,
     required: true,
   },
   dateSubmitted: {
