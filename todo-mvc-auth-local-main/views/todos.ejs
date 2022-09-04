@@ -16,6 +16,14 @@
                 <span> Due: <%= el.dateDue %></span>
                 <span> Days remaining: <%= Math.ceil((new Date(Date.parse(el.dateDue)).getTime() - new Date().getTime() )/ (1000 * 3600 *24))%></span>
                 <span class='del'> Delete </span>
+                <!-- * nshoemake -->
+                <!-- ! Added form submission for username, submitting this will "push" the task to the other user (it will show up on their views) -->
+                <form action="/todos/shareTodo" method='POST'>
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="todoId" value="<%=el._id%>">
+                    <input type="text" placeholder="Enter Username" name='shareWithUserId'>
+                    <input type="submit">
+                </form>
             </li>
     <% }) %>    
     </ul>

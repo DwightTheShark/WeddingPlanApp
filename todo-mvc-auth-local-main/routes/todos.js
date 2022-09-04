@@ -13,4 +13,8 @@ router.put('/markIncomplete', todosController.markIncomplete)
 
 router.delete('/deleteTodo', todosController.deleteTodo)
 
+// * nshoemake
+// ! Added route for share method
+router.put('/shareTodo', todosController.shareTodo)
+
 module.exports = router
