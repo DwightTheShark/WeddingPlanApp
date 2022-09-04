@@ -67,3 +67,12 @@ async function markIncomplete(){
         console.log(err)
     }
 }
+/* global bootstrap: false - bootstrap Side Bar*/
+(() => {
+    'use strict'
+    const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    tooltipTriggerList.forEach(tooltipTriggerEl => {
+      new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  })()
+  
