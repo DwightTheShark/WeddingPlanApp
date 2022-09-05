@@ -12,9 +12,7 @@
   <link rel="stylesheet" href="css/calender.css">
   <!-- Body Container -->
 <body class="d-flex flex-row h-100 bg-white">
-  <!-- Sidebar 
-        Issue#1:
-        Wasn't able to get the logout button to populate the bottom of the sheet-->
+  <!-- Sidebar -->
   <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
     <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
       <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
@@ -26,7 +24,21 @@
         <%= user.userName %>'s Wedding Plan
       </button>
       <div class="collapse show" id="home-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#allPlans-collapse" aria-expanded="true">
+                  All Plans
+                </button>
+                <div class="collapse show" id="allPlans-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <% todos.forEach( el => { %>
+                    <li class='todoItem' data.id="<%=el.id%>">
+                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"> <%= el.todo %> </a>
+                    </li>
+                    <% }) %>   
+                  </ul>
+                </div> 
+<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li class="mb-1">
                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#food-collapse" aria-expanded="true">
                   Food
@@ -36,25 +48,60 @@
                     <% todos.forEach( el => { %>
                       <% if(el.category === 'food'){ %>
                     <li class='todoItem' data.id="<%=el.id%>">
-                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"></a>
+                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"> <%= el.todo %> </a>
                     </li>
                         <% } %>
                     <% }) %>   
                   </ul>
                 </div> 
+<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#vendor-collapse" aria-expanded="true">
+                  Vendors
+                </button>
+                <div class="collapse show" id="vendor-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <% todos.forEach( el => { %>
+                      <% if(el.category === 'vendors'){ %>
+                    <li class='todoItem' data.id="<%=el.id%>">
+                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"> <%= el.todo %> </a>
+                    </li>
+                        <% } %>
+                    <% }) %>   
+                  </ul>
+                </div> 
+<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#clothing-collapse" aria-expanded="true">
+                  Clothing
+                </button>
+                <div class="collapse show" id="clothing-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <% todos.forEach( el => { %>
+                      <% if(el.category === 'clothing'){ %>
+                    <li class='todoItem' data.id="<%=el.id%>">
+                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"> <%= el.todo %> </a>
+                    </li>
+                        <% } %>
+                    <% }) %>   
+                  </ul>
+                </div>
               </li>
       </div>
     </li>
       <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#sharedPlans-collapse" aria-expanded="false">
           Shared Wedding Plans
         </button>
-        <div class="collapse" id="dashboard-collapse">
+        <div class="collapse" id="sharedPlans-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Overview</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Weekly</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Monthly</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Annually</a></li>
+                    <% todos.forEach( el => { %>
+                      <% if(el.userId.length > 0){ %>
+                    <li class='todoItem' data.id="<%=el.id%>">
+                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"></a>
+                    </li>
+                        <% } %>
+                    <% }) %>   
           </ul>
         </div>
       </li>
@@ -62,17 +109,13 @@
       <a class="w-100 btn btn-lg btn-primary" href="/logout">Sign Out</span>
     </a>
     </ul>
-  </div>
+  </div>  
   <!-- Right container -->
     <div class="d-flex bg-white flex-column">
   
       <!-- Top Container: Calender - Search - New Task -->
       <div class="d-flex justify-content-between">
-        <!-- Left Container: Calender 
-            Issue#2:
-            The idea was to be able to recflect the dates
-            queried from the todo, jquery is already added, just need to add a function
-            to apply the event class inside of the calendar.css-->
+        <!-- Left Container: Calender -->
         <div class="d-sm-flex">
       <div class="calendar">
         <div class="year-header">
@@ -114,26 +157,17 @@
     </div>
     </div>
     </div>
-    <!--Calender End-->
-
-        <!-- Right Top Container: Search - New Task
-                Issue #3:
-                Had problems applying padding and margins
-                for the boxes containing Search and New Task form
-                Also wanted to add a title or something above the new task form-->
+    
+        <!-- Right Top Container: Search - New Task-->
           <div class="d-flex flex-column justify-content-between my-3 mr-5">
-            <!-- Right Upper Search Container
-                Issue #4:
-                Their is currently no search functionality -->
-            <div class="d-flex">
-            
+            <div class="d--flex">
+            <!-- Right Upper Search Container -->
             <form class="d-flex justify-content-end" role="search">
                       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-dark" type="submit">Search</button>
                     </form>
             </div>
-            <!-- Right Lower New Task Container
-                See Issue#3 -->
+            <!-- Right Lower New Task Container -->
             <div class="d-flex bg-secondary justify-content-around align-items-end p-5">
                <form class="p-2" action="/todos/createTodo" method='POST'>
           <input type="text" placeholder="Enter a New Wedding Task" name='todoItem'>
@@ -153,13 +187,12 @@
         </div>
       </div>
     
-    <!-- Right Lower Task Container -->
+    <!-- Lower Right Main Body -->
         <div class="container-tasks d-flex align-items-end flex-wrap">
               <div class="album py-5 bg-light">
                 <div class="container">
-                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <!-- This is the start of the loop which pulls the to do lists and
-                        populates them inside of the container -->
+                  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 col-lg-12 col-xl-12 g-12" >
+                    <!-- 1st card -->
                     <% todos.forEach( el => { %>
                   <div class="col">
                       <div class="card shadow-sm">
@@ -173,19 +206,14 @@
                           <p class="card-text ">
                               Days remaining: <%= Math.ceil((new Date(Date.parse(el.dateDue)).getTime() - new Date().getTime() )/ (1000 * 3600 *24))%>
                           </p>
-                          <div
-                            class="d-flex justify-content-between align-items-center"
-                          >
-                            <div class="btn-group">
-                                <!--Issue #4 - Delete listener isn't applied to the button -->
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group" data-id='<%=el._id%>'>
                               <button
                                 type="button"
                                 class="del btn btn-sm btn-outline-secondary"
                               >
                                 Delete
                               </button>
-                              <!--This button calls the modal located at the bottom,
-                                    it contains Nick's share form, see Issue#5-->
                               <button
                                 type="button"
                                 class="btn btn-sm btn-outline-secondary"
@@ -195,25 +223,17 @@
                                 Share
                               </button>
                             </div>
-                            <small class="text-muted">9 mins</small>
+                            <small class="text-muted"><%= el.dateSubmitted %></small>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <% }) %> 
-                    <!--Ending of the above loop-->  
+                    <% }) %>   
                   </div>
                 </div>
               </div>
             </div>
     </div>
-    <!--The above div closes the whole of the Right Container -->
-
-    <!-- Below contains the modal that will pop up when you click the share button on a task
-        Issue #5:
-        Didn't test the functionality of the share button, will need to be debugged,
-        probably just add a unique id or something, otherwise there will be additional
-        errors because they're very dependent on parent elements holding the id-->
   
   <div class="modal fade" id="staticBackdropLive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
@@ -223,13 +243,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-                <!-- * nshoemake -->
-                <!-- ! Added form submission for username, submitting this will "push" the task to the other user (it will show up on their views) -->
-                <form action="/todos/shareTodo" method='POST'>
-                    <input type="hidden" name="_method" value="PUT">
-                    <input type="hidden" name="todoId" value="<%=el._id%>">
-                    <input type="text" placeholder="Enter Username" name='shareWithUserId'>
-                    <input type="submit">
+            <!-- Place holder for Nick's Form to share-->  
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
