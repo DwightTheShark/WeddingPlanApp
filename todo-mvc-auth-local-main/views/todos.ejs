@@ -4,87 +4,286 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span> Due: <%= el.dateDue %></span>
-                <span> Days remaining: <%= Math.ceil((new Date(Date.parse(el.dateDue)).getTime() - new Date().getTime() )/ (1000 * 3600 *24))%></span>
-                <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
+    <title><%= user.userName %>'s Wedding Planner'</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"></head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/sidebar.css" />
+  <link rel="stylesheet" href="css/right-main.css">
+  <link rel="stylesheet" href="css/calender.css">
+  <!-- Body Container -->
+<body class="d-flex flex-row h-100 bg-white">
+  <!-- Sidebar -->
+  <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+      <span class="fs-5 fw-semibold">Wedding Planner</span>
+    </a>
+    <ul class="list-unstyled ps-0">
+          <li class="mb-1">
+      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+        <%= user.userName %>'s Wedding Plan
+      </button>
+      <div class="collapse show" id="home-collapse">
+<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <!--The ul inside of the buttons performs a loop which pulls the data id that
+            is used to display the title of the task -->
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#allPlans-collapse" aria-expanded="true">
+                  All Plans
+                </button>
+                <div class="collapse show" id="allPlans-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <% todos.forEach( el => { %>
+                    <li class='todoItem' data.id="<%=el.id%>">
+                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"> <%= el.todo %> </a>
+                    </li>
+                    <% }) %>   
+                  </ul>
+                </div> 
+<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#food-collapse" aria-expanded="true">
+                  Food
+                </button>
+                <!-- Start of Food Loop -->
+                <div class="collapse show" id="food-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <% todos.forEach( el => { %>
+                      <% if(el.category === 'food'){ %>
+                    <li class='todoItem' data.id="<%=el.id%>">
+                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"> <%= el.todo %> </a>
+                    </li>
+                        <% } %>
+                    <% }) %>   
+                  </ul>
+                </div> 
+<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#vendor-collapse" aria-expanded="true">
+                  Vendors
+                </button>
+                <!-- Start of Vendors Loop -->
+                <div class="collapse show" id="vendor-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <% todos.forEach( el => { %>
+                      <% if(el.category === 'vendors'){ %>
+                    <li class='todoItem' data.id="<%=el.id%>">
+                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"> <%= el.todo %> </a>
+                    </li>
+                        <% } %>
+                    <% }) %>   
+                  </ul>
+                </div> 
+<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#clothing-collapse" aria-expanded="true">
+                  Clothing
+                </button>
+                <!-- Start of Clothing -->
+                <div class="collapse show" id="clothing-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <% todos.forEach( el => { %>
+                      <% if(el.category === 'clothing'){ %>
+                    <li class='todoItem' data.id="<%=el.id%>">
+                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"> <%= el.todo %> </a>
+                    </li>
+                        <% } %>
+                    <% }) %>   
+                  </ul>
+                </div>
+              </li>
+      </div>
+    </li>
+            <!-- Shared To Do's Loop, Just checks the userId array.length, any time it has more than one user
+                  the task is displayed-->
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#sharedPlans-collapse" aria-expanded="false">
+          Shared Wedding Plans
+        </button>
+        <div class="collapse" id="sharedPlans-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <% todos.forEach( el => { %>
+                      <% if(el.userId.length > 0){ %>
+                    <li class='todoItem' data.id="<%=el.id%>">
+                      <a class="link-dark d-inline-flex text-decoration-none rounded <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>"></a>
+                    </li>
+                        <% } %>
+                    <% }) %>   
+          </ul>
+        </div>
+      </li>
+      <li class="border-top my-3"></li>
+      <a class="w-100 btn btn-lg btn-primary" href="/logout">Sign Out</span>
+    </a>
     </ul>
-
-    <!--
-        mdcv: the following lists separate all of the User's tasks according to what category it's related to. Marking a task off in the category will also
-        mark it off in the Master list. Delete works in this manner as well.
-
-        To implement: I just added a nested if statement inside of the forEach to filter out the tasks based on the category property
+  </div>  
+  <!-- Right container -->
+    <div class="d-flex bg-white flex-column">
+  
+      <!-- Top Container: Calender - Search - New Task -->
+      <div class="d-flex justify-content-between">
+        <!-- Left Container: Calender -->
+        <div class="d-sm-flex">
+      <div class="calendar">
+        <div class="year-header">
+          <span class="left-button fa fa-chevron-left" id="prev"> </span>
+          <span class="year" id="label">2022</span>
+          <span class="right-button fa fa-chevron-right" id="next"> </span>
+        </div>
+          <table class="months-table w-100">
+            <tbody>
+            <tr class="months-row">
+            <td class="month">Jan</td>
+            <td class="month">Feb</td>
+            <td class="month">Mar</td>
+            <td class="month">Apr</td>
+            <td class="month">May</td>
+            <td class="month">Jun</td>
+            <td class="month">Jul</td>
+            <td class="month">Aug</td>
+            <td class="month active-month">Sep</td>
+            <td class="month">Oct</td>
+            <td class="month">Nov</td>
+            <td class="month">Dec</td>
+            </tr>
+            </tbody>
+          </table>
+          <table class="days-table w-100">
+            <tbody><tr><td class="day">Sun</td>
+            <td class="day">Mon</td>
+            <td class="day">Tue</td>
+            <td class="day">Wed</td>
+            <td class="day">Thu</td>
+            <td class="day">Fri</td>
+            <td class="day">Sat</td>
+            </tr></tbody></table>
+          <div class="frame">
+          <table class="dates-table w-100">
+          <tbody class="tbody"><tr class="table-row"></tr><tr class="table-row"><td class="table-date nil"></td><td class="table-date nil"></td><td class="table-date nil"></td><td class="table-date nil"></td><td class="table-date">1</td><td class="table-date">2</td><td class="table-date">3</td></tr><tr class="table-row"><td class="table-date active-date">4</td><td class="table-date">5</td><td class="table-date">6</td><td class="table-date">7</td><td class="table-date">8</td><td class="table-date">9</td><td class="table-date">10</td></tr><tr class="table-row"><td class="table-date">11</td><td class="table-date">12</td><td class="table-date">13</td><td class="table-date">14</td><td class="table-date">15</td><td class="table-date">16</td><td class="table-date">17</td></tr><tr class="table-row"><td class="table-date">18</td><td class="table-date">19</td><td class="table-date">20</td><td class="table-date">21</td><td class="table-date">22</td><td class="table-date">23</td><td class="table-date">24</td></tr><tr class="table-row"><td class="table-date">25</td><td class="table-date">26</td><td class="table-date">27</td><td class="table-date">28</td><td class="table-date">29</td><td class="table-date">30</td><td class="table-date nil"></td></tr><tr class="table-row"><td class="table-date nil"></td><td class="table-date nil"></td><td class="table-date nil"></td><td class="table-date nil"></td></tr></tbody>
+          </table>
+    </div>
+    </div>
+    </div>
     
-    -->
-    <h2>Category: Food</h2>
-    <ul>
-        <% todos.forEach( el => { %>
-            <% if(el.category === 'food'){ %>
-                <li class='todoItem' data-id='<%=el._id%>'>
-                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                    
-                    <span class='del'>&nbsp;Delete </span>
-                </li>
-            <% } %>
-        <% }) %>    
-    </ul>
-    <h2>Category: Vendors</h2>
-    <ul>
-        <% todos.forEach( el => { %>
-            <% if(el.category === 'vendors'){ %>
-                <li class='todoItem' data-id='<%=el._id%>'>
-                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                    
-                    <span class='del'>&nbsp;Delete </span>
-                </li>
-            <% } %>
-        <% }) %>    
-    </ul>
-    <h2>Category: Clothing</h2>
-    <ul>
-        <% todos.forEach( el => { %>
-            <% if(el.category === 'clothing'){ %>
-                <li class='todoItem' data-id='<%=el._id%>'>
-                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                    
-                    <span class='del'>&nbsp;Delete </span>
-                </li>
-            <% } %>
-        <% }) %>    
-    </ul>
+        <!-- Right Top Container: Search - New Task-->
+          <div class="d-flex flex-column justify-content-between my-3 mr-5">
+            <div class="d--flex">
+            <!-- Right Upper Search Container 
+                  PS: It doesn't work -->
+            <form class="d-flex justify-content-end" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-dark" type="submit">Search</button>
+                    </form>
+            </div>
+            <!-- Right Lower New Task Container -->
+            <div class="d-flex bg-secondary justify-content-around align-items-end p-5">
+               <form class="p-2" action="/todos/createTodo" method='POST'>
+          <input type="text" placeholder="Enter a New Wedding Task" name='todoItem'>
+          <input type="date" id="dateDue" name="dateDue"
+         min="2022-01-01" max="2024-12-31">
+  
+         <!-- mdcv: Added dropdown menu to select priority level -->
+          <select id="category" name="category">
+              <option value="" selected="true" disabled="disabled">Select Category</option>
+              <option name="category" value="food">Food</option>
+              <option name="category" value="vendors">Vendors</option>
+              <option name="category" value="clothing">Clothing</option>
+          </select>
+          <input type="submit">
+               </form>  
+          </div>
+        </div>
+      </div>
+    
+    <!-- Lower Right Main Body -->
+        <div class="container-tasks d-flex align-items-end flex-wrap">
+              <div class="album py-5 bg-light">
+                <div class="container">
+                  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 col-lg-12 col-xl-12 g-12" >
+                    <!-- Card Loops is the usual forEach function that populates all of your available tasks,
+                          The idea was to add an additional function which just toggles a display:show/display:hide on them via the side
+                          bar but we didn't get around to it -->
+                    <% todos.forEach( el => { %>
+                  <div class="col">
+                      <div class="card shadow-sm">
+                        <div class="card-body todoItem" data-id='<%=el._id%>'>
+                          <div class="modal fade" id="staticBackdropLive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="staticBackdropLiveLabel">Share your Wedding Plans</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Like most of these functions, they always refer to the parentnode having an ID, so you always have to make sure
+                                      the parent node has it, I'd like to change how that works entirely, just store them in a key value pair or something-->
+                                <div class="modal-body">
+                                        <!-- * nshoemake -->
+                                        <!-- ! Added form submission for username, submitting this will "push" the task to the other user (it will show up on their views) -->
+                                        <form action="/todos/shareTodo" method='POST'>
+                                          <input type="hidden" name="_method" value="PUT">
+                                          <input type="hidden" name="todoId" value="<%=el._id%>">
+                                          <input type="text" placeholder="Enter Username" name='shareWithUserId'>
+                                          <input type="submit">
+                                      </form>        
+                                    </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <p class='h5 <%= el.completed === true ? 'completed' : 'not'%>'>
+                              <%= el.todo %>
+                          </p>
+                          <p class="card-text ">
+                              Due: <%= el.dateDue %>
+                          </p>
+                          <p class="card-text ">
+                              Days remaining: <%= Math.ceil((new Date(Date.parse(el.dateDue)).getTime() - new Date().getTime() )/ (1000 * 3600 *24))%>
+                          </p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group" data-id='<%=el._id%>'>
+                              <!--Delete button also has to have a parent node-->
+                              <button
+                                type="button"
+                                class="del btn btn-sm btn-outline-secondary"
+                              >
+                                Delete
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#staticBackdropLive"
+                              >
+                                Share
+                              </button>
+                            </div>
+                            <small class="text-muted"><%= el.dateSubmitted %></small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% }) %>   
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div>
+  
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
-
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="date" id="dateDue" name="dateDue"
-       min="2022-01-01" max="2024-12-31">
-
-       <!-- mdcv: Added dropdown menu to select priority level -->
-        <select id="category" name="category">
-            <option value="" selected="true" disabled="disabled">Select Category</option>
-            <option name="category" value="food">Food</option>
-            <option name="category" value="vendors">Vendors</option>
-            <option name="category" value="clothing">Clothing</option>
-        </select>
-        <input type="submit">
-    </form>
 
 
 
-    <a href="/logout">Logout</a>
-
+  <!--CDN Bootstrap + js -->
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/sidebars.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="js/calender.js"></script>
 </body>
 </html>
