@@ -2,9 +2,11 @@
 
 A Simple ToDo App is built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app 
 
+View the live app here: https://cruising-wedding-planner.herokuapp.com/
 ---
 
 > Be sure to add that lovely star 😀 and fork it for your own copy
+![wedding-planner-gif](https://user-images.githubusercontent.com/101226771/188735466-ef77d210-0fae-48be-a36e-e9776164827f.gif)
 
 ---
 
