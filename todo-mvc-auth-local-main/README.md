@@ -3,7 +3,7 @@
 A Simple ToDo App is built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app 
 
 ---
-wedding-planner-gif.gif
+![wedding-planner-gif](https://user-images.githubusercontent.com/101226771/188735131-fda35d1d-04c3-477b-a32a-f3a05d3642e7.gif)
 > Be sure to add that lovely star 😀 and fork it for your own copy
 
 ---
