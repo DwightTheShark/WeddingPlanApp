@@ -25,6 +25,8 @@
       </button>
       <div class="collapse show" id="home-collapse">
 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <!--The ul inside of the buttons performs a loop which pulls the data id that
+            is used to display the title of the task -->
             <li class="mb-1">
                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#allPlans-collapse" aria-expanded="true">
                   All Plans
@@ -43,6 +45,7 @@
                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#food-collapse" aria-expanded="true">
                   Food
                 </button>
+                <!-- Start of Food Loop -->
                 <div class="collapse show" id="food-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <% todos.forEach( el => { %>
@@ -59,6 +62,7 @@
                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#vendor-collapse" aria-expanded="true">
                   Vendors
                 </button>
+                <!-- Start of Vendors Loop -->
                 <div class="collapse show" id="vendor-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <% todos.forEach( el => { %>
@@ -75,6 +79,7 @@
                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#clothing-collapse" aria-expanded="true">
                   Clothing
                 </button>
+                <!-- Start of Clothing -->
                 <div class="collapse show" id="clothing-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <% todos.forEach( el => { %>
@@ -89,6 +94,8 @@
               </li>
       </div>
     </li>
+            <!-- Shared To Do's Loop, Just checks the userId array.length, any time it has more than one user
+                  the task is displayed-->
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#sharedPlans-collapse" aria-expanded="false">
           Shared Wedding Plans
@@ -161,7 +168,8 @@
         <!-- Right Top Container: Search - New Task-->
           <div class="d-flex flex-column justify-content-between my-3 mr-5">
             <div class="d--flex">
-            <!-- Right Upper Search Container -->
+            <!-- Right Upper Search Container 
+                  PS: It doesn't work -->
             <form class="d-flex justify-content-end" role="search">
                       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-dark" type="submit">Search</button>
@@ -192,11 +200,38 @@
               <div class="album py-5 bg-light">
                 <div class="container">
                   <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 col-lg-12 col-xl-12 g-12" >
-                    <!-- 1st card -->
+                    <!-- Card Loops is the usual forEach function that populates all of your available tasks,
+                          The idea was to add an additional function which just toggles a display:show/display:hide on them via the side
+                          bar but we didn't get around to it -->
                     <% todos.forEach( el => { %>
                   <div class="col">
                       <div class="card shadow-sm">
                         <div class="card-body todoItem" data-id='<%=el._id%>'>
+                          <div class="modal fade" id="staticBackdropLive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="staticBackdropLiveLabel">Share your Wedding Plans</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Like most of these functions, they always refer to the parentnode having an ID, so you always have to make sure
+                                      the parent node has it, I'd like to change how that works entirely, just store them in a key value pair or something-->
+                                <div class="modal-body">
+                                        <!-- * nshoemake -->
+                                        <!-- ! Added form submission for username, submitting this will "push" the task to the other user (it will show up on their views) -->
+                                        <form action="/todos/shareTodo" method='POST'>
+                                          <input type="hidden" name="_method" value="PUT">
+                                          <input type="hidden" name="todoId" value="<%=el._id%>">
+                                          <input type="text" placeholder="Enter Username" name='shareWithUserId'>
+                                          <input type="submit">
+                                      </form>        
+                                    </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <p class='h5 <%= el.completed === true ? 'completed' : 'not'%>'>
                               <%= el.todo %>
                           </p>
@@ -208,6 +243,7 @@
                           </p>
                           <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group" data-id='<%=el._id%>'>
+                              <!--Delete button also has to have a parent node-->
                               <button
                                 type="button"
                                 class="del btn btn-sm btn-outline-secondary"
@@ -234,23 +270,6 @@
               </div>
             </div>
     </div>
-  
-  <div class="modal fade" id="staticBackdropLive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLiveLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <!-- Place holder for Nick's Form to share-->  
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
   
 
 
