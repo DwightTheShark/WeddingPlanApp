@@ -7,7 +7,6 @@ View the live app here: https://cruising-wedding-planner.herokuapp.com/
 
 > Be sure to add that lovely star 😀 and fork it for your own copy
 ![wedding-planner-gif](https://user-images.githubusercontent.com/101226771/188735466-ef77d210-0fae-48be-a36e-e9776164827f.gif)
-![alt tag](http://placecorgi.com/1200/650) <<please replace with screenshot>>
 
 ## How It's Made:
 
