@@ -64,11 +64,11 @@ Backend: Mongoose is an incredibly powerful ODM that makes working with MongoDB 
 ## Contributors:
 The main contributors to this project are:
 
--**DwightTheShark:** https://github.com/DwightTheShark
--**hanzlasaadi:** https://github.com/hanzlasaadi
--**mdcam:** https://github.com/mdcam
--**nshoemake:** https://github.com/nshoemake/
--**policeage:** https://github.com/policeage
+- **DwightTheShark:** https://github.com/DwightTheShark
+- **hanzlasaadi:** https://github.com/hanzlasaadi
+- **mdcam:** https://github.com/mdcam
+- **nshoemake:** https://github.com/nshoemake/
+- **policeage:** https://github.com/policeage
 
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
