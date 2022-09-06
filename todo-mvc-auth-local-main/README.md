@@ -7,7 +7,6 @@ View the live app here: https://cruising-wedding-planner.herokuapp.com/
 
 > Be sure to add that lovely star 😀 and fork it for your own copy
 ![wedding-planner-gif](https://user-images.githubusercontent.com/101226771/188735466-ef77d210-0fae-48be-a36e-e9776164827f.gif)
-![alt tag](http://placecorgi.com/1200/650) <<please replace with screenshot>>
 
 ## How It's Made:
 
@@ -65,11 +64,12 @@ Backend: Mongoose is an incredibly powerful ODM that makes working with MongoDB 
 ## Contributors:
 The main contributors to this project are:
 
-**DwightTheShark:** https://github.com/DwightTheShark
-**hanzlasaadi:** https://github.com/hanzlasaadi
-**mdcam:** https://github.com/mdcam
-**nshoemake:** https://github.com/nshoemake/
-**policeage:** https://github.com/policeage
+- **DwightTheShark:** https://github.com/DwightTheShark
+- **hanzlasaadi:** https://github.com/hanzlasaadi
+- **mdcam:** https://github.com/mdcam
+- **nshoemake:** https://github.com/nshoemake
+- **policeage:** https://github.com/policeage
+- **whit-morgan:** https://github.com/whit-morgan
 
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
