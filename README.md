@@ -1,8 +1,7 @@
 # Wedding Plan App
 An application for a day that takes a team to tackle! A wedding day! This application allows users to create tasks, assign due dates, assign cateogories, and share them with other users. 
 
-**Link to project:**
-View the live app here: https://cruising-wedding-planner.herokuapp.com/
+View the live app here: https://cruzwedding2022.nicoleschnurr.me/
 ---
 
 > Be sure to add that lovely star 😀 and fork it for your own copy
